@@ -8,7 +8,7 @@ but a dpkg trigger).
 
 ## Install
 
-Use prebuilt dpkg package: download the .deb file and:
+Use prebuilt dpkg package: [download](https://github.com/imkzh/fix-vscode-icon/releases/tag/1.3-1) the `vscode-icon-fix.deb` and:
 
     sudo dpkg -i vscode-icon-fix.deb
 
@@ -26,7 +26,7 @@ to uninstall this package:
     sudo apt purge vscode-icon-fix
     
 The changes this script made is not reverted after purge.
-To revert the changes, clone this code and then:
+To revert the changes:
 
     git clone https://github.com/imkzh/fix-vscode-icon
     cd fix-vscode-icon
