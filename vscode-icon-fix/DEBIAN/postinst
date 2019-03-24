@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -e
+
+VSCODE_DESKTOP_FILE="/usr/share/applications/code.desktop"
+
+
+patch(){
+    # update vscode desktop file.
+    
+    if [ -e $VSCODE_DESKTOP_FILE ]; then
+        echo "Patching $VSCODE_DESKTOP_FILE .."
+        v=$(cat "$VSCODE_DESKTOP_FILE") 
+        echo "$v" | sed "s/Icon=code/Icon=vscode/" > "$VSCODE_DESKTOP_FILE"
+    else
+        echo "Desktop file not found at: '$VSCODE_DESKTOP_FILE', bye.\n"
+    fi
+}
+
+restore(){
+   # update vscode desktop file.
+   if [ -f $VSCODE_DESKTOP_FILE ]; then
+       v=$(cat "$VSCODE_DESKTOP_FILE") 
+       echo "$v" | sed "s/Icon=vscode/Icon=code/" > "$VSCODE_DESKTOP_FILE"
+   fi
+}
+
+case "$1" in
+    
+    configure|triggered)
+        patch
+    ;;
+    
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+    
+    revert)
+        restore
+    
+    *)
+        echo "postinst called with unknown argument '$1'" >&2
+        exit 1
+esac
+exit 0
+
