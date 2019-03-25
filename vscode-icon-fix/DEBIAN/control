@@ -1,14 +1,15 @@
 Package: vscode-icon-fix
 Priority: optional
-Version: 1.3-1
+Version: 1.3.1-1
 Maintainer: imkzh <https://github.com/imkzh/fix-vscode-icon>
 Installed-Size: 0
 Architecture: all
 Depends: code (>= 1.0-1)
 Description: Fix the vscode icon.
  .
- Vscode use "code" as its name for desktop icon, and it is a "too-general" name for most icon packages(like numix-circle). 
- This package simply add a post installation trigger for "code.desktop" located at "/usr/share/applications", to automatically 
- change the icon name to "vscode" every time the file is updated (which means this package installs no file to your system, 
- but a dpkg trigger). 
-
+ Vscode use  "code"  as its  name for desktop icon,  and it is a  "too-general"
+ name  for most icon packages (like numix-circle).  This package simply  adds a
+ post installation trigger for vscode executable located at "/usr/share/code/bi
+ n", to automatically  change the icon name to "vscode"  every time the file is
+ updated.
+ (This package installs no file to your system, but only some package metadata)
